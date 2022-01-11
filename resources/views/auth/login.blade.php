@@ -21,7 +21,7 @@
         <form action="{{ route('login') }}" method="POST" class="frm-single">
             @csrf
             <div class="inside">
-                <div class="title"><strong>Kotha</strong>Kharcha</div>
+                <div class="title"><strong>Stock</strong>Management</div>
                 <!-- /.title -->
                 <div class="frm-title">Login</div>
                 
