@@ -1,0 +1,37 @@
+.btn:focus{
+    color:white!important;
+}
+.hidden{
+    display: none;
+}
+.btn.disabled, .btn:disabled {
+    opacity: 1;
+}
+.display-inline-block{
+    display: inline-block;
+}
+.pay_members_row{
+    border: 1px solid #b7b3b3;
+    padding: 15px 0 15px 0;
+    border-radius: 3px;
+}
+.pay_members{
+    padding: 0 10px 0px 15px;
+    margin-bottom: 15px;
+}
+@media only screen and (max-width: 767px) {
+    .pay_members {
+        padding: 0 20px 0 15px;
+    }
+    .pay_members_div{
+        margin-bottom: 15px;
+    }
+  }
+
+.text-right{
+    text-align: right;
+}
+.addProduct{
+    margin-left: -20px;
+    margin-top: 10px;
+}
