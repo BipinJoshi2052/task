@@ -28,7 +28,7 @@ class ProductController extends Controller
                 $result->toArray();
             }else{
                 $result->where('created_by',Auth::user()->id)->toArray();
-            }           
+            }       
             return $this->successResponse(ProductResource::collection($result), 'Data Get Successfully!');
         } catch (Exception $e) {
             return $this->errorResponse();

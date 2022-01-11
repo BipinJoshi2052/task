@@ -70,7 +70,10 @@
                         <a class="waves-effect" href="{{route('dashboard')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
                     </li>	
                     <li class="{{ (request()->segment(1) == 'products') ? 'current active' : '' }}">
-                        <a class="waves-effect" href="{{route('products.index')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Products</span></a>
+                        <a class="waves-effect" href="{{route('products.index')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Stocks</span></a>
+                    </li>
+                    <li>
+                        <a class="waves-effect" href="{{route('web.logout')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Logout</span></a>
                     </li>
                 </ul>
                 <!-- /.menu js__accordion -->
@@ -189,24 +192,16 @@
 	<script src="{{asset('plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js')}}"></script>
 	<script src="{{asset('scripts/datatables.demo.min.js')}}"></script>
 
-	<!-- Remodal -->
-	<script src="{{asset('plugin/modal/remodal/remodal.min.js')}}"></script>
 
 
 
     
 	<script src="{{asset('js/custom.js')}}"></script>
-
-    {{-- @error('error')
-        <script>
-        toastr.error('{{ $message }}');
-        </script>
-    @enderror --}}
     
     @if (session('success'))
-    <script>
-        toastr.success('{{ session('success') }}');
-    </script>
+        <script>
+            toastr.success('{{ session('success') }}');
+        </script>
     @endif
     @if (session('error'))
         @if(is_array(session('error')))
@@ -221,7 +216,74 @@
             </script>
         @endif
     @endif
+
     <script>
+    $(document).ready( function () {
+        $('.datatable').DataTable({
+            pageLength: 100,
+            dom: "<'row'<'col-sm-2'l><'col-sm-7 text-center'B><'col-sm-3'f>>tipr",
+            buttons: [
+            {
+               extend: 'copy',
+               className: 'btn-sm btn-info',
+               title: 'Gamers',
+               header: false,
+               footer: true,
+               exportOptions: {
+                  // columns: ':visible'
+               }
+            },
+            {
+               extend: 'csv',
+               className: 'btn-sm btn-success',
+               title: 'Gamers',
+               header: false,
+               footer: true,
+               exportOptions: {
+                  // columns: ':visible'
+               }
+            },
+            {
+               extend: 'excel',
+               className: 'btn-sm btn-warning',
+               title: 'Gamers',
+               header: false,
+               footer: true,
+               exportOptions: {
+                  // columns: ':visible',
+               }
+            },
+            {
+               extend: 'pdf',
+               className: 'btn-sm btn-primary',
+               title: 'Gamers',
+               pageSize: 'A2',
+               header: false,
+               footer: true,
+               exportOptions: {
+                  // columns: ':visible'
+               }
+            },
+            {
+               extend: 'print',
+               className: 'btn-sm btn-success',
+               title: 'Gamers',
+               // orientation:'landscape',
+               pageSize: 'A2',
+               header: true,
+               footer: false,
+               orientation: 'landscape',
+               exportOptions: {
+                  // columns: ':visible',
+                  stripHtml: false
+               }
+            }
+         ],
+        });
+    } );
+    
+</script>
+        
     <script>
         $('.select2').select2();
         jQuery(document).ready( function () {

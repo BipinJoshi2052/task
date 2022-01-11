@@ -17,11 +17,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $result = Product::get();
+        $result = [];
         if(Auth::user()->role == 'admin'){
-            $result->toArray();
+            $result = Product::get()->toArray();
         }else{
-            $result->where('created_by',Auth::user()->id)->toArray();
+            $result = Product::get()->where('created_by',Auth::user()->id)->toArray();
         }
         return view('products.index',compact('result'));   
     }

@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +22,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('web/logout',[Controller::class,'logout'])->name('web.logout');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $result = [];
+    if(Auth::user()->role == 'admin'){
+        $result = Product::count();
+    }else{
+        $result = Product::where('created_by',Auth::user()->id)->count();
+    }
+    return view('dashboard',compact('result'));     
 })->name('dashboard');
 
 

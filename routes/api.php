@@ -25,8 +25,11 @@ use App\Http\Controllers\Api\ProductController;
 Route::post('/login',[AuthController::class,'login'])->name('api-login');
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::prefix('/auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::group(['prefix' => 'products'], function () {
         Route::get('/', [ProductController::class, 'index']);

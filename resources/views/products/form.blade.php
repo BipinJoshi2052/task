@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Edit Product
+{{isset($product)?'Edit':'Create'}} Stocks
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
 <div class="row small-spacing">
 	<div class="col-xl-12 col-12">
 		<div class="box-content card white">
-			<h4 class="box-title">{{isset($product)?'Edit':'Create'}} Product</h4>
+			<h4 class="box-title">{{isset($product)?'Edit':'Create'}} Stock</h4>
 
 			<div class="card-content">
 				<form action="{{route('products.store')}}" method="post">
