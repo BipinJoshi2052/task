@@ -106,7 +106,7 @@
                     @foreach(auth()->user()->notifications as $notification)
                         @if($notification->type == 'App\Notifications\FriendReuquestNotification')
                             <li>
-                                <a href="{{route('requests')}}">
+                                <a href="">
                                     <span class="avatar"><img src="{{asset('images/'.$notification->data['data']['image'])}}" alt="{{$notification->data['data']['name']}}"></span>
                                     <span class="name">Friend Request</span>
                                     <span class="desc">{{$notification->data['data']['name']}} has reuquested to be a friend.”</span>
