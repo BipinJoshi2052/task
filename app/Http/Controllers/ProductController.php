@@ -85,7 +85,11 @@ class ProductController extends Controller
     {
         //
     }
-
+    public function docs()
+    {
+        return view('docs');
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *

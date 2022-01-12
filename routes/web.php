@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('web/logout',[Controller::class,'logout'])->name('web.logout');
+Route::get('docs',[ProductController::class,'docs'])->name('docs');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $result = [];

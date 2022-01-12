@@ -52,6 +52,8 @@
 	<!-- Remodal -->
 	<link rel="stylesheet" href="{{asset('plugin/modal/remodal/remodal.css')}}">
 	<link rel="stylesheet" href="{{asset('plugin/modal/remodal/remodal-default-theme.css')}}">
+	<!-- Jquery UI -->
+	<link rel="stylesheet" href="{{asset('plugin/jquery-ui/jquery-ui.min.css')}}">
 
 </head>
 
@@ -71,6 +73,9 @@
                     </li>	
                     <li class="{{ (request()->segment(1) == 'products') ? 'current active' : '' }}">
                         <a class="waves-effect" href="{{route('products.index')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Stocks</span></a>
+                    </li>
+                    <li class="{{ (request()->segment(1) == 'docs') ? 'current active' : '' }}">
+                        <a class="waves-effect" href="{{route('docs')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Docs</span></a>
                     </li>
                     <li>
                         <a class="waves-effect" href="{{route('web.logout')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Logout</span></a>
@@ -193,6 +198,9 @@
 	<script src="{{asset('scripts/datatables.demo.min.js')}}"></script>
 
 
+	<!-- Jquery UI -->
+	<script src="{{asset('plugin/jquery-ui/jquery-ui.min.js')}}"></script>
+	<script src="{{asset('plugin/jquery-ui/jquery.ui.touch-punch.min.js')}}"></script>
 
 
     
