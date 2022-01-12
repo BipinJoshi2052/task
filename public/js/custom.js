@@ -38,57 +38,7 @@ $( document ).ready(function() {
             }
         });
     });
-    $(".accept-request").on('click',function (e) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        
-        e.preventDefault();
-        
-        var	cid =  $(this).data('id');
-        var	requestId =  $(this).data('requestid');
-
-        var type = "POST";
-        var ajaxurl = '/friends/accept-request';
-        var interval = null;
-
-        $.ajax({
-            type: type,
-            url: ajaxurl,
-            data: {
-                "cid": cid,
-                "requestId": requestId,
-            },
-            dataType: 'json',
-            beforeSend: function() {
-                i = 0;
-                $(".accept-"+cid).addClass("disabled");
-                interval = setInterval(function() {
-                    i = ++i % 4;
-                    $(".accept-"+cid).html("Accepting"+Array(i+1).join("."));
-                }, 500);
-            },
-            success: function (data) {
-                setTimeout(function () {
-                    clearInterval(interval);
-                    $(".accept-"+cid).remove();
-                    $(".reject-"+cid).remove();
-                    toastr.success('Success',data.repsonse);
-                    $(".accept-"+cid).html("Request Accepted");
-                    var viewProfileBtn = '<a href="javascript:void(0);" class="btn btn-warning">View Profile</a>';
-                    $('.button-stack').append(viewProfileBtn);
-                }, 1000);
-            },
-            error: function (data) {
-                clearInterval(interval);
-                $(".accept-"+cid).removeClass("disabled");
-                toastr.error('Error',data.responseText);
-                console.log('error in friend request send');
-            }
-        });
-    });
+   
     $(".reject-request").on('click',function (e) {
         $.ajaxSetup({
             headers: {

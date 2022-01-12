@@ -24,10 +24,17 @@
                 <div class="title"><strong>Stock</strong>Management</div>
                 <!-- /.title -->
                 <div class="frm-title">Login</div>
+                <div>
+                    <a href="javascript:void(0);" class="btn btn-primary cre-btn mb-5" data-email="admin@gmail.com" data-pass="password">Admin</a>
+                    <a href="javascript:void(0);" class="btn btn-primary cre-btn mb-5" data-email="supplier-1@gmail.com" data-pass="password">Supllier 1</a>
+                    <a href="javascript:void(0);" class="btn btn-primary cre-btn mb-5" data-email="supplier-2@gmail.com" data-pass="password">Supllier 2</a>
+
+                </div>
                 
                 <!-- /.frm-title -->
                 <div class="frm-input">
-                    <input type="text" placeholder="Email" class="frm-inp"  name="email" value="{{ old('email') }}" required autofocus><i class="fa fa-user frm-ico"></i>
+                    
+                    <input type="text" placeholder="Email" class="frm-inp input-email"  name="email" value="{{ old('email') }}" required autofocus><i class="fa fa-user frm-ico"></i>
                     @error('email')
                         <span class="invalid-feedback" role="alert" style="display: block!important;">
                             <strong>{{ $message }}</strong>
@@ -36,7 +43,7 @@
                 </div>
                 <!-- /.frm-input -->
                 <div class="frm-input">
-                    <input type="password" placeholder="Password" class="frm-inp"  name="password" required autocomplete="current-password" ><i class="fa fa-lock frm-ico"></i>
+                    <input type="password" placeholder="Password" class="frm-inp input-pass"  name="password" required autocomplete="current-password" ><i class="fa fa-lock frm-ico"></i>
                     @error('password')
                         <span class="invalid-feedback" role="alert" style="display: block!important;">
                             <strong>{{ $message }}</strong>
@@ -83,6 +90,24 @@
 	<script src="{{asset('plugin/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('plugin/nprogress/nprogress.js')}}"></script>
 	<script src="{{asset('plugin/waves/waves.min.js')}}"></script>
+    <script>
+         $(".cre-btn").on('click',function (e) {
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
+        
+        
+        var	email =  $(this).data('email');
+        var	pass =  $(this).data('pass');
+
+        $('.input-email').val(email);
+        $('.input-pass').val(pass);
+        console.log('asdf');
+      
+    });
+    </script>
 </body>
 
 </html>
